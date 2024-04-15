@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Personal projects by Dominic Daly" />
+    <title>Personal Projects</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- styles -->
+    <link rel="stylesheet" href="stylesheets/stylesIndex.css" />
+  </head>
+  <body>
+    <header id="homePersonal">
+      <!-- navbar -->
+      <nav id="nav">
+        <div class="nav-center">
+          <!-- nav header -->
+          <div class="nav-header">
+            <a
+              href="https://www.linkedin.com/in/betterfuturedom/"
+              target="_blank"
+            >
+              <img src="./images/linkedin.svg" class="logo" alt="logo" />
+            </a>
+            <button class="nav-toggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+          <!-- links -->
+          <div class="links-container">
+            <ul class="links">
+              <li>
+                <a href="./index.html">home</a>
+              </li>
+              <li>
+                <a href="#nsections" class="scroll-link">Sections</a>
+              </li>
+              <li>
+                <a href="./networking.html">Networking</a>
+              </li>
+              <li>
+                <a href="./development.html">Development</a>
+              </li>
+              <li>
+                <a href="#homePersonal" class="scroll-link">Personal</a>
+              </li>
+              <li>
+                <a href="./index.html#contact">contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- banner -->
+      <div class="banner">
+        <div class="container">
+          <h1>Personal Projects</h1>
+          <p>
+            This section is about personal projects which are worth mentioning i
+            feel.
+          </p>
+          <a href="#nsections" class="scroll-link btn btn-white"
+            >explore projects</a
+          >
+        </div>
+      </div>
+    </header>
+    <!-- sections -->
+    <section id="nsections" class="section">
+      <div class="title">
+        <h2>Personal <span>Projects</span></h2>
+        <ul class="devlinks">
+          <li>
+            <a href="#thiswebsite" class="scroll-link">This Website</a>
+          </li>
+          <li>
+            <a href="#homeserver" class="scroll-link">Home Server</a>
+          </li>
+          <li>
+            <a href="#gamedev" class="scroll-link">Game Development</a>
+          </li>
+          <li>
+            <a href="#mhs" class="scroll-link">Mental Health Speeches</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- This Website -->
+    <section id="thiswebsite" class="section">
+      <div class="title">
+        <h2>this <span>website</span></h2>
+        <p>
+          The first project that I have is the very website you are on right
+          now! The site is developed with HTML, CSS, and Javascript. I tried to
+          keep it basic but beautiful as that is my design philosophy for many
+          things I do! The source code is available by inspecting this in your
+          browser. One of the things you may notice is a lot of my text,
+          including this text is in .txt files. This is to keep my code on my
+          HTML simple and easy to read, my personal feeling is that I do not
+          like my HTML filled with text. I used JS to fill it with text. This
+          also allows the text to be updated with just the file.
+        </p>
+      </div>
+    </section>
+    <!-- Home Server -->
+    <section id="homeserver" class="section">
+      <div class="title">
+        <h2>home <span>server</span></h2>
+        <p>
+          I run a home server that runs its own Linux OS(Unraid). I started this
+          venture by buying an old workstation from a website called Cash
+          Converters it had a Xeon® CPU E3-1241 v3, which is a quad-core with 8
+          threads. 12GB of RAM. A 120 GB SSD and a raedeon HD6670. This cost me
+          £100 and I had to make a few upgrades before I could use it. The first
+          of these upgrades is storage as a storage server with 120GB wasn't
+          going to cut it. I bought 2x 8TB Ironwolf Pro HDDs and used one as a
+          parity drive and one as a data drive. Next was a new case, PSU, with
+          more drives and more RAM. I upgraded the RAM from an 8GB and 4GB stick
+          to 4x8GB sticks to give me 32GB. Currently, as of writing this has
+          39TB of storage with an 8TB parity and 2x500GB cache SSDs, 500w PSU,
+          and a Silverstone CS380. Next, I will go into more depth about
+          specific parts of the system. Unraid is a powerful, easy-to-use
+          operating system for self-hosted servers and network-attached storage.
+          Its main benefits are the ability to add drives as you go, No RAID
+          (hence the name Unraid), UNIX-based, massive community, and easy
+          setup. Out of all of these, my main reason for using Unraid was the
+          "add as you go" ability in unraid meaning I started with 2 drives and
+          added more later.
+        </p>
+        <img src="images/101. Server.png" alt="server" class="pphotos" />
+        <p>
+          Docker Containers can be pulled, customized, and installed almost
+          instantly with the community apps plugin installed. this allows for
+          systems to be set up and run very quickly. Below are pictures of my
+          docker containers (some are blurred for privacy-related reasons). The
+          one I would like to speak more on is PIHole. PiHole is an open-source
+          adblocking, tracker-blocking, and telemetry-blocking utility that I
+          swear by. this docker version also uses DoT and DoH which stands for
+          DNS over TLS and DNS over HTTPS. DNS over TLS is a network security
+          protocol for encrypting and wrapping Domain Name System (DNS) queries
+          and answers via the Transport Layer Security (TLS) protocol. The goal
+          of the method is to increase user privacy and security by preventing
+          eavesdropping and manipulation of DNS data via man-in-the-middle
+          attacks. The well-known port number for DoT is 853. DNS over HTTPS
+          (DoH) is a protocol for performing remote Domain Name System (DNS)
+          resolution via the HTTPS protocol. A goal of the method is to increase
+          user privacy and security by preventing eavesdropping and manipulation
+          of DNS data by man-in-the-middle attacks[1] by using the HTTPS
+          protocol to encrypt the data between the DoH client and the DoH-based
+          DNS resolver. This device grabs the DNS queries from a publically
+          available DNS provider securely then uses the resolution on its own
+          and creates its own DNS database so I don't have to rely on external
+          DNS providers. PiHole has so many features that I cannot tell you them
+          all and I'd rather link you to their official website for you to have
+          a look yourself. I also use a docker container of OwnCloud which is
+          like OneDrive but it's stored on my server, not someone else's. This
+          is used by multiple people outside my network too who connect via
+          either a tunnel or reverse proxy depending on who it is, essentially
+          making me run my own cloud service. a smaller thing is I also run my
+          own game servers on this that people can connect to and are
+          port-forwarded for people to connect outside my network.
+        </p>
+        <img
+          src="images/102. DockerContainers.png"
+          alt="docker"
+          class="pphotos"
+        />
+        <p>
+          You can also set up your shares in Unraid and it is compatible with
+          Linux, MacOS, and Windows out of the box. The shares I use are
+          MainShare, Backups, Media, OwnCloud, appdata, and isos. You can also
+          set up users with different permissions.
+        </p>
+        <img src="images/103. Shares.png" alt="docker" class="pphotos" />
+        <p>
+          Tunneling is a great way to access data and devices when away from the
+          home. I have 2 tunnels set up on my server, one for me and one for my
+          girlfriend. Tunneling is a method for transporting data across a
+          network using protocols that are not supported by that network.
+          Tunneling works by encapsulating packets: wrapping packets inside of
+          other packets. (Packets are small pieces of data that can be
+          re-assembled at their destination into a larger file). Tunneling is
+          often used in virtual private networks (VPNs). It can also set up
+          efficient and secure connections between networks, enable the usage of
+          unsupported network protocols, and in some cases allow users to bypass
+          firewalls. My tunnels are through a Wireguard VPN and are mainly used
+          so me and her can route our phone traffic through my server, to the
+          PiHole device to help keep our data secure even when away from home.
+          But it could be used for file access and more.
+        </p>
+        <img src="images/104. Tunnels.png" alt="tunnels" class="pphotos" />
+        <p>I thought I'd also show how my drives are configured</p>
+        <img src="images/105. Drives.png" alt="drives" class="pphotos" />
+      </div>
+    </section>
+    <!-- Game Development -->
+    <section id="gamedev" class="section">
+      <div class="title">
+        <h2>game <span>development</span></h2>
+        <p>
+          I am also currently developing a video game in an engine called
+          Impactjs. I had previously worked in Unity but with recent
+          controversies, I have moved over to impactjs. I may move over again
+          but right now I'm about 300 hours into development and moving now
+          would be a costly measure. I won't go much into this as it's still a
+          small project with only about 7 - 10 hours of content but it is a
+          story-driven RPG about a young man who has to find his dad's killer. I
+          wanted to focus on the story since I am a one-man dev team and I
+          cannot compete with the quality of even small indie studios in terms
+          of graphics etc. So creating a good story and mechanics is a way to go
+          for this. This project is going to have a release to Steam and my
+          website once finished but it is a side project and I am taking the
+          time it needs in the oven to be right. The game will basically be
+          complied as a web app for most purposes as it adds so much
+          functionality. I could use a web app on phones, PCs, the internet and
+          even consoles in the future.
+        </p>
+        <img src="images/Gamelogo.png" alt="gamelogo" class="pphotos" />
+      </div>
+    </section>
+    <!-- Mental Health Sessions -->
+    <section id="mhs" class="section">
+      <div class="title">
+        <h2>Mental Health <span>speeches</span></h2>
+        <p id="MHData">
+          I also give mental health speeches at universities and businesses. As
+          someone who has previously struggled, it's extra important for people
+          who have been through it to help others understand who is going into
+          that field. I have done speeches in places like The University of
+          Manchester and Salford University. Based on my past experiences I give
+          advice and my own story to help people understand. To see my
+          testimonials and website visit www.betterfutureuk.com
+        </p>
+      </div>
+    </section>
+    <!-- footer -->
+    <footer class="section">
+      <p>
+        copyright &copy; Dominic Daly
+        <span id="date"></span>. all rights reserved
+      </p>
+    </footer>
+    <a class="scroll-link top-link" href="#homePersonal">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- javascript -->
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

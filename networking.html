@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Networking experience and projects by Dominic Daly"
+    />
+    <title>Networking</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- styles -->
+    <link rel="stylesheet" href="stylesheets/stylesIndex.css" />
+  </head>
+  <body>
+    <header id="homeNetworking">
+      <!-- navbar -->
+      <nav id="nav">
+        <div class="nav-center">
+          <!-- nav header -->
+          <div class="nav-header">
+            <a
+              href="https://www.linkedin.com/in/betterfuturedom/"
+              target="_blank"
+            >
+              <img src="./images/linkedin.svg" class="logo" alt="logo" />
+            </a>
+            <button class="nav-toggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+          <!-- links -->
+          <div class="links-container">
+            <ul class="links">
+              <li>
+                <a href="./index.html">home</a>
+              </li>
+              <li>
+                <a href="#nsections" class="scroll-link">Sections</a>
+              </li>
+              <li>
+                <a href="#homeNetworking" class="scroll-link">Networking</a>
+              </li>
+              <li>
+                <a href="./development.html">Development</a>
+              </li>
+              <li>
+                <a href="./personal.html">Personal</a>
+              </li>
+              <li>
+                <a href="./index.html#contact">contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- banner -->
+      <div class="banner">
+        <div class="container">
+          <h1>Networking Portfolio</h1>
+          <p>
+            This part of the Portfolio is examples of stuff that I have done
+            that gives me experience in the networking field
+          </p>
+          <a href="#nsections" class="scroll-link btn btn-white"
+            >Explore Networking</a
+          >
+        </div>
+      </div>
+    </header>
+    <!-- sections -->
+    <section id="nsections" class="section">
+      <div class="title">
+        <h2>Networking <span>Sections</span></h2>
+        <ul class="devlinks">
+          <li>
+            <a href="#routerdown" class="scroll-link">Layer 3 Router Down</a>
+          </li>
+          <li>
+            <a href="#vlanconfig" class="scroll-link">VLAN Configuration</a>
+          </li>
+          <li>
+            <a href="#portforward" class="scroll-link">Port Forwarding</a>
+          </li>
+          <li>
+            <a href="#routerinstall" class="scroll-link">Router Installation</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- router down -->
+    <section id="routerdown" class="section">
+      <div class="title">
+        <h2>Router <span>Down</span></h2>
+        <p>
+          In this task, a site's network is offline due to its router being
+          offline. This is a retail site so the router being down only allows
+          them to do cash sales. This will affect the business heavily and their
+          potential sales and profits. The router is a layer 3 part and handles
+          the routing of data inside the network and the data coming in and out
+          of the network, it sends the data outside of the network via the
+          default gateway. Due to the router being offline, data cannot leave
+          the network and if it is fully offline, data cannot be moved locally
+          or within the LAN. For example, the layer 2 switches won't be able to
+          communicate with each other, leading to tills, PCs, tablets and more
+          being offline too.
+        </p>
+        <br />
+        <p>
+          My task involves identifying the cause or causes of the router being
+          down, troubleshooting it and finally bringing it back online making
+          the store able to trade once again. The task may sound simple and be
+          able to be typed in one sentence, but the process requires more steps.
+        </p>
+        <br />
+        <p>
+          When a router goes offline it will be alerted to us via our monitoring
+          system called Pandora. For a router, it needs to be offline for 20
+          minutes before it alerts us, this changes based on what it is, for
+          example, a lease line or head office going offline is alerted after 2
+          minutes and 4G routers are 60 minutes. When a router has been down for
+          20 minutes it sends an email alert to our Outlook inbox when then
+          automatically raises the email as a ticket to our ticketing system,
+          Autotask. An example of our ticket is below. This ticket reference for
+          this case was T20230829.0202.
+        </p>
+        <img src="./images/0.monitoring.PNG" alt="ticket" class="pphotos" />
+        <p>
+          The official SLA for response time to a ticket like this is 1 hour and
+          8 hours for a resolution if it doesn’t need external teams, like
+          Openreach or an engineer visit. These SLAs are important as it helps
+          the customer understand the time we need to complete something and
+          when it’s expected to be back up.
+        </p>
+        <p>
+          The next step is to ping the router as it could have come online since
+          the ticket was raised or something else could have brought it back up
+          and online. I use the PING command with the switch -t which makes the
+          ping continuous. The ICMP packet will confirm whether the router is
+          down.
+        </p>
+        <img src="./images/2. confirmed down.PNG" alt="ping" class="pphotos" />
+        <p>
+          The continuous ping above shows that it has not been able to contact
+          the router and has lost 100% of the packets it sent, meaning the
+          router is still offline.
+        </p>
+        <p>
+          The next step is to run a line test. A line test is testing both the
+          PSTN(if using one) and ADSL/FTTC/FTTP line all the way to the site
+          from the provider. The reason we test the lines is that if either of
+          the lines are having issues, this can impact the site down the line.
+          If the line had a fault that could be the probable reason to why the
+          router is down. For testing the PSTN we go through a portal called
+          Abillity.
+        </p>
+        <p>
+          First, we log in to Abillity, then we select WLR3 Tools. The you put
+          the CLI into he box and confirm the postcode. You are then able to run
+          a test.
+        </p>
+        <img src="images/3. wlr3.PNG" alt="lines" class="pphotos" />
+        <img src="images/8. test.png" alt="result" class="pphotos" />
+        <p>
+          In this case, the test passed, so we moved on to testing the ADSL part
+          of the line. If this failed and had a fault we would raise this to
+          Openreach and if the site pays for a 4G drop-in service, provide a
+          temporary router. To test the DSL part of the line, this site uses TTB
+          as the provider and can be completed by doing the following.
+        </p>
+        <img src="images/4. Check in sync.PNG" alt="sync" class="pphotos" />
+        <p>
+          First, we log in and go to supportal, when we are there, we put in the
+          CLI. We can then check if the line is in sync or not. In this case the
+          line isn’t in sync so you will have to run a line test, but if it is
+          in sync, then we can do a port reset. A port reset drops the port in
+          the exchange and forces the router to reauthenticate, this can solve
+          some issues with the router as if it is in sync but not authenticating
+          you will get no internet. Since the line isn’t in sync we move to the
+          next step.
+        </p>
+        <p>
+          Next, we select the service LLU and put in the CLI, this will populate
+          the information about the line and allow you to run a line test,
+          called a TAM test here. LLU stands for Local loop unbundling, and this
+          allows for companies other than BT to give out broadband using
+          Openreach lines. This means that TTB is using ORs lines to provide
+          broadband to us.
+        </p>
+        <img src="images/5. LLU.PNG" alt="llu" class="pphotos" />
+        <p>
+          So, then we select TAM test and issue and it will show the result once
+          complete. Once ran, it will show a result like below.
+        </p>
+        <img src="images/6. LLU result.PNG" alt="result" class="pphotos" />
+        <p>
+          Since both line tests passed this means that the fault isn’t with the
+          line but with the equipment on site. To test on-site equipment there
+          are many steps, but we always do initial checks first as there isn’t
+          much point in sending an engineer when we can bring the router back
+          online over the phone if it is switched off for example. So, we do the
+          initial checks over the phone to save time and make the work more
+          efficient. When we call the site, we will check the lights that are at
+          the front of the device as this will give us an indicator of what is
+          going on here, for example, this site Had the PWR, SYS and VDSL lights
+          on, but we also expect the PPP light on (Point to point protocol). Due
+          to the PPP light not being on this will indicate an issue with the DSL
+          cable as we send PPP over the line, but it’s getting a signal from the
+          line as the VDSL light is on. So first we unplug the RJ11 cable from
+          the router and plug it back in, when then do the same for the side
+          that is connected to the filter into the master socket on the wall.
+          This is due to over time it can get loose or tugged on and come loose.
+          Usually, this can bring it back online and we run a continuous ping
+          anyway just to see if it helps but it’s good practice to reboot the
+          kit too as it gets a fresh connection and startup. We ask the site to
+          unplug the power, wait 10-15 seconds then plug it back in. After this,
+          we monitor the site to make sure comms return and the site is back
+          online. In this case, the site starts to get successful pings as it
+          comes back online showing that the router is getting a connection and
+          is online. Shown below is the successful ping response.
+        </p>
+        <img src="images/7. online.PNG" alt="test" class="pphotos" />
+        <p>
+          I sent 47 ICMP packets and it was 100% successful. The reason we send
+          so many is to make sure that the site is successfully stable. If the
+          site had been down for an extended period, we may continue to monitor
+          for a period of time to make sure nothing goes wrong with the site as
+          it has been down for a while, when closing we would write something
+          similar to the below.
+        </p>
+        <img
+          src="images/closing intermiitent.PNG"
+          alt="intermittent"
+          class="pphotos"
+        />
+        <p>
+          When closing the case we need to give proof it has been stable. The
+          above photo shows our radius logs. This is a tool we use where we have
+          a file with all the logins for the sites for PPP authentication. Every
+          time a router authenticates it uses the logins from the USERS file on
+          the radius server and connects to the internet using the PPP details
+          stored. Every time a site successfully authenticates with the line and
+          USERS file makes a log which is then stored on the radius. This allows
+          us to see how many times a router authenticates with us allowing us to
+          check if the connection is stable, if it is authenticating a lot then
+          it shows that the connection isn’t stable. And it would need to be
+          looked at. As you can see in the red circle it hasn’t needed to
+          authenticate for the last week which means it has held that same
+          connection without issue. The other piece of proof we provide is a
+          standard ping response to show it’s currently online. If it has been
+          down for a short period of time then we would use a closing message
+          like below.
+        </p>
+        <img src="images/closing standard.PNG" alt="standard" class="pphotos" />
+        <p>
+          This is obviously less detailed in showing that it has been stable as
+          it isn’t referencing the radius logs, but it does explain what we did
+          to bring it back online and shows a ping response as proof that it is
+          online and currently online. Doing an in-depth stability check isn’t
+          always required if the network went down briefly and was stable before
+          as it could be as simple as it being accidentally unplugged. We still
+          explain what we did to bring it online, but we don’t explain that we
+          are going to monitor it as it isn’t required. This keeps the network
+          security at a high level as the firmware versions we use are tested
+          and have minimal flaws. The newest version is usually good but can
+          have unforeseen bugs and flaws so it's important to use a version with
+          a good knowledge base behind it. Overall, this was resolved in the
+          first response which was 35 mins after the ticket was raised. This
+          fulfils both the first response SLA of 1 hour and resolution SLA of 8
+          Hours.
+        </p>
+      </div>
+    </section>
+    <!-- vlan config -->
+    <section id="vlanconfig" class="section">
+      <div class="title">
+        <h2>VLAN <span>Configuration</span></h2>
+        <p>
+          For this task I had to add Vlan 1130 to two ports which were shutdown
+          and only had a certain LAN range that didn't include Vlan 1130. Below
+          is the ticket we received.
+        </p>
+        <img src="images/9.ticket.png" alt="ticket" class="pphotos" />
+        <p>
+          A VLAN is a virtual local area network which is its own partitioned
+          bit of the network at the data layer of the OSI model. Virtual in this
+          sense means that it has been altered by the extra logic required for a
+          VLAN to work. They work by applying a tag to make it function and
+          appear as a single network but acts as if they are separate networks.
+          It's fundamentally different to something like a subnet as it works on
+          MAC addresses which is on layer 2 and subnets work on IP addresses
+          which is on layer 3. It also has different amounts of use cases as
+          VLANs can create different physical and logical addresses, on the
+          other hand Subnets can only create logical networks within the same
+          physical network.
+        </p>
+        <p>
+          After having a look at the switch, I found that ports 20 - 24 were
+          shutdown and only allowed ranges 1 - 1005 by using the command sh
+          interface status. My tasks were I had to bring the ports back online
+          and allow the access through the new VLAN 1130.
+        </p>
+        <p>
+          First I used the command <i>conf t</i> to get into the config, I then
+          used <i>int fastEthernet 0/22</i> to get to port 22. I then did
+          <i> shutdown</i>, to bring it back online and
+          <i>switchport trunk allowed vlan add 1130</i> to add vlan 1130 to the
+          allowed list over trunk. I then did the same for port 24
+        </p>
+        <img src="images/10 conf.png" alt="config" class="pphotos" />
+        <p>
+          I then had to check the config by typing <i>sh run</i> to make sure
+          the settings had applied. below shows that ports 22 and 24 are online
+          and allowing vlan1130.
+        </p>
+        <img src="images/11.conf2.png" alt="config" class="pphotos" />
+        <p>
+          We then showed the screenshots of it working and the switch passing
+          vlan1130, which allowed us to close the case. Overall, this job took
+          30 minutes for the first response and resolution which is within the
+          1-hour response and 8-hour resolution time.
+        </p>
+      </div>
+    </section>
+    <!-- port forwarding -->
+    <section id="portforward" class="section">
+      <div class="title">
+        <h2>Port <span>Forwarding</span></h2>
+        <p>working</p>
+      </div>
+    </section>
+    <!-- Router Install -->
+    <section id="routerinstall" class="section">
+      <div class="title">
+        <h2>Router <span>Installation</span></h2>
+        <p>
+          One of the sites that we managed needed a new router as the current
+          one was losing packets and sync. This was causing an issue with trade
+          which means that it needs a replacement router installed and when we
+          replace a router, we also replace the DSL cable and filter during this
+          time if required. I was tasked with swapping the router and bringing
+          the site back online to a stable connection.
+        </p>
+        <p>
+          The first thing we need to do here is to install the new router and
+          make sure it gains sync with the line. The old device was also a one
+          access but faulty which increases the chances of it working on this
+          line. The line we are installing this on is a DSL line which stands
+          for digital subscriber line, the line was installed by Openreach which
+          is standard for most homes but not guaranteed. We plug the filter into
+          the socket on the wall and the DSL cable into the RJ11 connector in
+          the filter that is for the modem and the RJ11 connector on the router.
+          Usually, the sockets are labeled with the number of the line so if
+          there were 2 you would know which one is which. Unfortunately, this
+          one wasn't labeled, but there is only one line on-site with one
+          termination, so this is highly likely to be the correct line. If there
+          were 2 unlabelled sockets you can plug a phone into the socket and
+          dial out with the phone to see the number. There are other lines that
+          use a DSL terminal like FTTC which is fibre to the cabinet, that then
+          uses copper to the property.
+        </p>
+        <img src="images/201. Cabling.png" alt="cabling" class="pphotos" />
+        <p>
+          When I plugged in the power cable, I had to wait for the router to
+          boot up and be able to gain sync. For this, I would need the status
+          and IP light on the router. Eventually the router did have the correct
+          lights on which means I can plug in a laptop into the router to check
+          data passthrough. This router by default has no 802.11 trunk ports, so
+          data can go through any of the RJ45 ethernet ports, but since some
+          config is required, I am going to plug in my laptop to the console
+          port on the router and this adapts from RJ45 to USB for it to connect
+          to the laptop. Plugging into the console port allows us to access the
+          router CLI. The reason we need to access the CLI of the router is that
+          it is using the default config of the one access and we need to move
+          our config onto the router for it to work correctly on site.
+        </p>
+        <p>
+          Now we have logged onto the new router we need to transfer the new
+          config over to the router. The protocol we will use for this is called
+          the Trivial File Transfer protocol. This uses UDP port 69 without any
+          encryption but as this is local the transfer protocol is fine for what
+          we are doing. We set the config that we need to use and send it over
+          TFTP.
+        </p>
+        <p>
+          Before this can be done, we need to configure the router to allow data
+          through the TFTP protocol as this is disabled by default for security
+          purposes. We also need to allow data passing on the port to get the
+          new config sent over to the router. Using the correct commands on the
+          router and using the right IP and port will allow me to send the data
+          over.
+        </p>
+        <img src="images/203. conf.png" alt="conf t" class="pphotos" />
+        <p>
+          conf t - this allows for configuration in the terminal <br />int gi
+          1/0 - this goes into gigabit ethernet labelled 1/0 <br />
+          ip add ip and mask - this sets the IP for that port <br />
+          ip tftp source-interface gi 1/0 - this allows for tftp from port 1/0
+          as the source <br />
+          sh ip int bri - shows the interfaces briefly
+        </p>
+        <img src="images/204. tftp.png" alt="tftp" class="pphotos" />
+        <p>
+          We use a program called Tftpd64 to transfer the config file to the
+          router. We can then send the file over to the router.
+        </p>
+        <img src="images/205.update.png" alt="update" class="pphotos" />
+        <p>
+          The update from the TFTP server has not been completed as shown below.
+          We then can reboot the router to ensure the new configuration is on
+          the router.
+        </p>
+        <p>
+          Once the router has been rebooted, we checked that all the kit can be
+          plugged into the router and we can see that the devices are connected
+          and able to access the internet. We use the sharp command to see if
+          all the devices show up and then ping one of the devices to see if
+          they respond, if they do we then need to check if they can access the
+          internet.
+        </p>
+        <img src="images/206.ping.png" alt="ping" class="pphotos" />
+        <p>
+          This shows the router can ping googles DNS server showing it can
+          access the internet. Pinging local devices shows that they are
+          connected to the router, and they can also access the internet. We
+          also set the boot config to be the new one as we wouldn’t want to
+          clear the config every time the router reboots itself, it also backs
+          up its config every Sunday evening to make sure that even if the
+          device somehow loses its config, it can be restored. This is also in
+          contact with our Pandora software so if it does go down again, we can
+          be alerted by our monitoring system. We can then work on it
+          appropriately. I learned more about types of lines and how a
+          configuration is installed on a one access router which does use the
+          same commands as Cisco. I would have liked to do an FTTP install too,
+          to learn more about fiber to the property.
+        </p>
+      </div>
+    </section>
+    <!-- footer -->
+    <footer class="section">
+      <p>
+        copyright &copy; Dominic Daly
+        <span id="date"></span>. all rights reserved
+      </p>
+    </footer>
+    <a class="scroll-link top-link" href="#homeNetworking">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+    <!-- javascript -->
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
