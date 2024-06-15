@@ -330,7 +330,75 @@
     <section id="portforward" class="section">
       <div class="title">
         <h2>Port <span>Forwarding</span></h2>
-        <p>working</p>
+        <p>
+          This task a new site has installed 2 switches, and we will need to
+          access them remotely for future configuration and troubleshooting. I
+          was not at the site for this, but I was able to remotely access the
+          router for the configuration of the port forwarding. <br />Port
+          forwarding is part of Network Address Translation (NAT) that redirects
+          requests from an IP and port to another while the packets are in
+          transit. The is most commonly used to make services on a host which is
+          in a private network available for external users. <br /><br />Typical
+          applications include the following:
+        </p>
+        <p>&#x2022;Running a public HTTP server within a private LAN</p>
+        <p>
+          &#x2022;Permitting Secure Shell access to a host on the private LAN
+          from the Internet
+        </p>
+        <p>
+          &#x2022;Permitting FTP access to a host on a private LAN from the
+          Internet
+        </p>
+        <p>
+          &#x2022;Running a publicly available game server within a private LAN
+        </p>
+        <p>
+          So first is had to enter sys mode which is similar to conf t on Cisco
+          router but also some commands are hidden behind it like ssh etc. Once
+          I am in system view, I must enter the dialler interface which I
+          connected to the line and has the public ip assigned to it. I then
+          type in this command:
+        </p>
+        <p>
+          <em>
+            nat server protocol tcp global current-interface 2221 inside
+            ip-address 22
+          </em>
+        </p>
+        <img src="./images/21. commands.PNG" alt="commands" class="pphotos" />
+        <p>
+          <em>nat server protocol tcp global</em> is that it's using a nat
+          command with the protocol of tcp and that its global.
+          <em>current-interface</em> is that it uses the current interface which
+          is dialler1 2221 is the external port, we then give the private IP
+          address then the internal port which is 22. You For the second switch
+          we change the external port to 2222 and the ip address, below is the
+          config for dialler1, circled is the new commands for port forwarding
+          the switches.
+        </p>
+        <img src="./images/22. config.PNG" alt="config" class="pphotos" />
+        <p>
+          Once you have ensured it is in the config you need to save it which is
+          a simple as typing save which is shown below:
+        </p>
+        <img src="./images/23. save.PNG" alt="" class="pphotos" />
+        <p>
+          After we have saved the config we need to make sure that the port
+          forward is working now so what we can do is put the IP into putty with
+          the port that it is allocated to which for switch 1 was 2221:
+        </p>
+        <img src="./images/24. putty.PNG" alt="" class="pphotos" />
+        <img src="./images/25. test sw1.PNG" alt="" class="pphotos" />
+        <p>
+          This task was completed in 35 mins so the response and completion SLA
+          was hit for this. I learnt about port forwarding on routers and how
+          useful they can make troubleshooting for devices that we support that
+          aren't directly connected to the router. I would of liked to do this
+          with routers by manufacturers other than Huawei as it would show me
+          how commands are different and it will help me develop this in the
+          future.
+        </p>
       </div>
     </section>
     <!-- Router Install -->
@@ -437,6 +505,153 @@
           configuration is installed on a one access router which does use the
           same commands as Cisco. I would have liked to do an FTTP install too,
           to learn more about fiber to the property.
+        </p>
+      </div>
+    </section>
+    <section id="firewallVPN" class="section">
+      <div class="title">
+        <h2>Fortinet Firewall <span>VPN Rule</span></h2>
+        <p>
+          We got this ticket below through for setting up and VPN tunnel to a
+          customer's Azure services. Site to site VPN tunnels typically
+          terminate on a firewall and router on both sides. They both used a
+          preshared key or certificate to connect. Our business uses IPsec,
+          ISAKAMP and IKE. IPsec is a secure network protocol suite that auths
+          and encrypts packets to allow a secure connection between devices. IKE
+          (internet key exchange) is a protocol used to set up a association in
+          the IPsec suite. Our company support both versions 1 and 2 as some
+          legacy devices only support V1 and by default V2 is aggressive and V1
+          has the option to be aggressive or not. ISAKMP (Internet Security
+          Association and Key Management Protocol) is like IKE but provides the
+          framework for key authentication. There are 2 phases for a connection
+          in IPsec, Phase 1 is The VPN devices negotiate an IKE security policy,
+          authenticate each other, and establish a secure channel. Phase 2: The
+          VPN devices negotiate an IPsec security policy to protect IPsec data.
+        </p>
+        <img src="./images/31. Ticket.PNG" alt="ticket" class="pphotos" />
+        <p>
+          First off, the attached change form that was required was wrong as it
+          was also a firewall change request not a VPN template that we require.
+          We first had to get the required form so I sent the following response
+          back to the customer:
+        </p>
+        <img src="./images/32. form.PNG" alt="form" class="pphotos" />
+        <p>
+          After that we got the correct document back but the IPs on our side
+          were not filled in and we require a change approver signing to allow
+          the change to happen, this a security method to anyone from changing
+          setting so malicious members cannot change settings. So I then had to
+          go back and request a change approver, I also named the people that
+          are able to approve this request.
+        </p>
+        <img
+          src="./images/34. CHange approver.PNG"
+          alt="change approval"
+          class="pphotos"
+        />
+        <p>I then got back the form and approval which is shown below:</p>
+        <img src="./images/33. Template.PNG" alt="template" class="pphotos" />
+        <p>
+          In this document we need the IPs on our side and the IPs on the third
+          parties side, which for this is the Azure service IPs, we also need
+          the setting for phase 1 and 2 of the IKE-ISAKMP. We require the
+          encryption, the hash, The Diffie-Hellman, version of IKE, how its
+          authenticating(preshared key or certificate), password and lifetime in
+          seconds. This information helps us to build the VPN setting or the
+          change in the firewall so it allows access. Once we had the
+          information, we needed I filled it in on our Firewall for the
+          customer, due to use having all the information it makes it easier for
+          us to just put it in and test it.
+        </p>
+        <p>
+          We filled in the name as AzureVPN With the comments of the ticket
+          reference. The gateway IP with it's interface.
+        </p>
+        <p>
+          IPs provided by customer to the correct remote address which is their
+          Azure service and the local IPs which is our IPs
+        </p>
+        <img src="./images/35. settings1.png" alt="settings" class="pphotos" />
+        <p>
+          below is the rule that allows the traffic from the VPN to go to the
+          Azure services and any other data to get redirected to a blackhole. A
+          black Hole in networking is a place where incoming or outgoing traffic
+          is silently discarded while not informing the source that the data
+          didn't reach its intended location. They are essentially invisible
+          without tracking lost packets.
+        </p>
+        <img src="./images/36. Settings 2.png" alt="setting" class="pphotos" />
+        <p>
+          We have a policy set up for traffic going into the Azure tunnel and
+          coming out. This allows for the traffic going in and out of the tunnel
+          to be correctly directed and pushed through.
+        </p>
+        <img src="./images/37.Settings 3.png" alt="settings" class="pphotos" />
+        <p>
+          We use a FortiGate 200F for the firewalls. A firewall is a security
+          device that monitors the incoming and outgoing traffic and can choose
+          whether to block or allow specific traffic based on a set of rules. A
+          firewall can be hardware, software, SaaS or in the cloud. For VPN
+          connections you would most likely have a firewall on each side
+          although this isn't essential. We use a deny all for most sites with
+          exceptions when required as we do have a set of defaults for allowing
+          access and a change request for anything extra. This allows us to
+          heavily control what we allow in and out of the network and see what
+          has been stopped by us and if there is any pattern to it. The specific
+          firewall we use has some extra features that allow us to keep known
+          and zero-day viruses away. It supports Web and DNS security which
+          includes DNS filtering which provides full visibility into DNS traffic
+          while blocking high-risk domains, and protects against DNS tunnelling,
+          DNS infiltration, C2 server ID and Domain Generation Algorithms (DGA).
+          URL filtering leverages a database of 300M+ URLs to identify and block
+          links to malicious sites and payloads. It also uses Zero-day threat
+          prevention which entails Fortinet's AI-based inline malware
+          prevention, our most advanced sandbox service, to analyse and block
+          unknown files in real-time, offering sub second protection against
+          zero-day and sophisticated threats across all NGFWs. The service also
+          has a built-in MITRE ATTACK® matrix to accelerate investigations.
+        </p>
+        <p>
+          We had an issue with this as the Azure side and ours was set up but we
+          weren't able to get traffic through the VPN by this response to the
+          ticket:
+        </p>
+        <img src="./images/38. issue.PNG" alt="issue" class="pphotos" />
+        <p>
+          When debugging we noticed that the Phase 1 was being rejected which
+          usually means a mismatch in settings, we knew our side was correct as
+          it get peer reviewed before it gets launched so we can ensure that it
+          is correct so we sent this response back:
+        </p>
+        <img src="./images/39. response.PNG" alt="resp" class="pphotos" />
+        <p>
+          But it turns out the user had changed the password without use knowing
+          so we got on a call with them to share the new password securely and
+          ensure that it is the same. <br /><br />Once we had the correct
+          password on each side got authentication on the logs for phase 2 and
+          connection traffic from each side as shown below:
+        </p>
+        <img src="./images/40. response.PNG" alt="resp" class="pphotos" />
+        <img
+          src="./images/41. negotiation.png"
+          alt="negotiation"
+          class="pphotos"
+        />
+        <p>
+          There were no longer failures in the logs and the Phase 2 was showing
+          as a success which means we had a connected tunnel and traffic was
+          going through it. The SLA for firewall changes is slightly different
+          at 5 days for completion but if 3rd parties get involved the SLA is
+          paused. This particular task was completed in 4 days and that was due
+          to the comms back and forth between the customer, it slowed us down
+          with the issue that we had which made it still within SLA but slower
+          than usual for this. I learnt a lot about Fortinet firewalls and VPN
+          tunnelling for this which will allow me to use this knowledge in the
+          future. I would like to try this with other types of firewalls as they
+          do vary between manufacturers, and it could be interesting to see how
+          it changes between them. I think the way we do things with a form
+          makes it easier and quicker for us to make the change as we have all
+          the information we need straight away.
         </p>
       </div>
     </section>
